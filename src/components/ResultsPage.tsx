@@ -103,11 +103,11 @@ const ResultsPage: React.FC = () => {
                   className={`border p-4 rounded-lg shadow-sm ${
                     theme === 'dark'
                       ? isCorrect
-                        ? 'bg-[#00ff0d68] text-white' // Darker green for dark theme
+                        ? 'bg-[#37923b68] text-white' // Darker green for dark theme
                         : 'bg-[#ff000058] text-white'   // Darker red for dark theme
                       : isCorrect
-                      ? 'bg-green-200 text-gray-800' // Lighter green for light theme
-                      : 'bg-red-200 text-gray-800'   // Lighter red for light theme
+                      ? 'bg-[#a6f59a] text-gray-800' // Lighter green for light theme
+                      : 'bg-[#f3b3b3] text-gray-800'   // Lighter red for light theme
                   }`}
                 >
                   <h3 className="text-xl font-semibold mb-2">{question.question}</h3>

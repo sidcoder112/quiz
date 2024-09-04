@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../slices/reviewSlice';
+import { RootState } from '@/store';
+
 
 const StarRating: React.FC = () => {
   const [rating, setRating] = useState<number>(0);
   const [thankYou, setThankYou] = useState<boolean>(false);
   const dispatch = useDispatch();
-
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const handleSubmit = () => {
     if (rating > 0) {
       dispatch(addReview({ rating }));
@@ -36,7 +38,7 @@ const StarRating: React.FC = () => {
           </div>
           <button
             onClick={handleSubmit}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className={` px-4 py-2 rounded ${theme === 'dark' ? 'bg-[#450f9b] text-white hover:bg-[#5922be]' : 'bg-[#a477ec] text-black hover:bg-[#7556ae]'}`}
           >
             Submit Review
           </button>
