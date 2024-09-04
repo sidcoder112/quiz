@@ -72,7 +72,7 @@ const Quiz: React.FC = () => {
   }, [quizFinished, responseJson, userAnswers, score, numberOfQuestions, navigate, category, difficulty, endTime, user]);
 
   const handleTimeUp = useCallback(() => {
-    handleAnswer(''); // Automatically submit empty answer on timeout
+    handleAnswer(''); //time up
   }, [handleAnswer]);
 
   const timerDuration = useMemo(() => {
@@ -87,7 +87,7 @@ const Quiz: React.FC = () => {
     if (!question) return null;
 
     return (
-      // <div className={` min-h-screen ${theme === 'dark' ? 'bg-slate-700 text-white' : 'bg-amber-100 text-gray-700'}`}>
+      
         <div className="font-inter shadow-md rounded-lg p-6 text-center mb-6">
           <p className="text-lg  font-semibold  mb-4">{question.question}</p>
           <div className="flex flex-col gap-3 space-y-4 items-center">
@@ -128,7 +128,6 @@ const Quiz: React.FC = () => {
             )}
           </div>
         </div>
-      // </div>  
     );
     
     
@@ -185,7 +184,7 @@ const Quiz: React.FC = () => {
             <Timer
               duration={timerDuration}
               onTimeUp={handleTimeUp}
-              key={currentQuestionIndex} // Use currentQuestionIndex to reset Timer on question change
+              key={currentQuestionIndex} // res timer
               keyProp={''}
             />
           </div>

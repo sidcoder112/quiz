@@ -1,30 +1,4 @@
-// import React, { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { useAuth0 } from '@auth0/auth0-react';
 
-// const AdminPanel: React.FC = () => {
-//   const navigate = useNavigate(); 
-//   const { user, isAuthenticated } = useAuth0();
-
-//   useEffect(() => {
-//     if (!isAuthenticated || user?.email !== 'sidharth.sl@netstratum.com') {
-//       navigate('*'); 
-//     }
-//   }, [isAuthenticated, user, navigate]);
-
-//   return (
-//     <div className="flex items-center">
-//       <button
-//         onClick={() => navigate('/')}
-//         className="mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-//       >
-//         Back to Home
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default AdminPanel;
 
 
 import React, { useEffect } from 'react';
@@ -54,7 +28,7 @@ const AdminPanel: React.FC = () => {
     return reviews.length > 0 ? (totalRatings / reviews.length).toFixed(1) : '0.0';
   };
 
-  // Calculate the number of reviews for each rating
+  
   const ratingCounts = Array(5).fill(0);
   reviews.forEach(review => {
     if (review.rating >= 1 && review.rating <= 5) {
@@ -63,13 +37,13 @@ const AdminPanel: React.FC = () => {
   });
 
   const chartData = {
-    labels: ['1', '2', '3', '4', '5'], // Ratings from 1 to 5
+    labels: ['1', '2', '3', '4', '5'], 
     datasets: [
       {
         label: 'Number of Reviews',
         data: ratingCounts,
-        backgroundColor: 'rgba(240, 192, 7, 0.8)', // Modern teal color
-        borderRadius: 10, // Rounded bars for a sleeker look
+        backgroundColor: 'rgba(240, 192, 7, 0.8)', 
+        borderRadius: 10, 
         borderColour: 'rgba(200, 180, 7, 0.8)',
         borderWidth: 2,
       },
@@ -77,20 +51,20 @@ const AdminPanel: React.FC = () => {
   };
 
   const chartOptions = {
-    indexAxis: 'y' as const, // Horizontal bar chart with ratings on y-axis
+    indexAxis: 'y' as const, 
     scales: {
       x: {
         beginAtZero: true,
         grid: {
-          color: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', // Subtle grid lines
+          color: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', 
         },
         ticks: {
-          color: theme === 'dark' ? '#fff' : '#333', // Dynamic color based on theme
-          stepSize: 1, // Ensure increments are whole numbers
+          color: theme === 'dark' ? '#fff' : '#333', 
+          stepSize: 1, 
         },
         title: {
           display: true,
-          text: 'Number of Reviews', // Label for the x-axis
+          text: 'Number of Reviews', 
           color: theme === 'dark' ? '#fff' : '#333',
           font: {
             size: 14,
@@ -98,19 +72,19 @@ const AdminPanel: React.FC = () => {
         },
       },
       y: {
-        beginAtZero: false, // Don't begin at zero
+        beginAtZero: false, 
         grid: {
-          display: false, // No grid lines for a cleaner look
+          display: false, 
         },
         ticks: {
-          color: theme === 'dark' ? '#fff' : '#333', // Dynamic color based on theme
+          color: theme === 'dark' ? '#fff' : '#333', 
           callback: function (_: unknown, index: number) {
-            return chartData.labels[index]; // Use the labels from the chartData
+            return chartData.labels[index]; 
           },
         },
         title: {
           display: true,
-          text: 'Rating', // Label for the y-axis
+          text: 'Rating', 
           color: theme === 'dark' ? '#fff' : '#333',
           font: {
             size: 14,
@@ -120,10 +94,10 @@ const AdminPanel: React.FC = () => {
     },
     plugins: {
       title: {
-        display: false, // Remove the chart title for a more modern look
+        display: false, 
       },
       tooltip: {
-        enabled: true, // Keep tooltips
+        enabled: true, 
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
         titleFont: {
           size: 14,
@@ -134,7 +108,7 @@ const AdminPanel: React.FC = () => {
       },
     },
     responsive: true,
-    maintainAspectRatio: false, // Allows better control over the chart's size
+    maintainAspectRatio: false, 
   };
   
   
@@ -188,7 +162,7 @@ const AdminPanel: React.FC = () => {
             <p className="text-lg font-semibold">{reviews.length}</p>
           </div>
         </div>
-        <div className="h-64 mb-6"> {/* Adjust the height for better visual control */}
+        <div className="h-64 mb-6"> 
           <Bar data={chartData} options={chartOptions} />
         </div>
         <button

@@ -81,7 +81,7 @@ export function useGenerateQuestions(category: string, difficulty: string, numbe
     }
 
     setLoading(true);
-    setError(null); // Clear previous errors
+    setError(null); // clear errors
     setResponseJson(null);
 
     try {

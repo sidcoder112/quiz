@@ -8,7 +8,7 @@ interface CheckmarkProps {
 const Checkmark: React.FC<CheckmarkProps> = ({ mark, totalQuestions }) => {
   const percentage = (mark / totalQuestions) * 100;
 
-  // Define a lookup table with percentage ranges, messages, and GIFs
+
   const scoreRanges = [
     { min: 100, message: "Perfect Score! You're an absolute genius!", gifUrl: 'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdml4c3AzNDRncjBjajZsdjliZng5cWw3bWV2Z2MxajFvdm13Z3VmdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/RtFGrL8Fn2xutS0qmN/giphy-downsized-large.gif' },
     { min: 90, message: "Amazing! Almost perfect!", gifUrl: 'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWF4aDByZWVkMnYzNTUyM2w0ZXRrbTZkOHl3OXkwcm1vNW56MHprdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6gE6VcDIuwebfUje/giphy.gif' },
@@ -21,7 +21,7 @@ const Checkmark: React.FC<CheckmarkProps> = ({ mark, totalQuestions }) => {
     { min: 0, message: "It’s okay! Keep practicing and you’ll get there!", gifUrl: 'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGt5dGZ6ejltMHc3emU1dTZtY3o5aWNiNnEzZTJ1NDlva2d0MWJsMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3BwSPbqx3QGKEgpp2/giphy.gif' },
   ];
 
-  // Find the first matching range where the percentage is greater than or equal to the min
+  // find first match > = min
   const { message, gifUrl } = scoreRanges.find(range => percentage >= range.min) || scoreRanges[scoreRanges.length - 1];
 
   return (

@@ -45,12 +45,11 @@ const ResultsPage: React.FC = () => {
     endTime,
   } = location.state as ResultsPageState;
 
-  // Convert startTime and endTime from ISO string to Date
+
   const startDate = new Date(startTime);
   const endDate = endTime ? new Date(endTime) : null;
 
-  // Calculate time taken
-  const timeTaken = endDate ? (endDate.getTime() - startDate.getTime()) / 1000 : 0; // in seconds
+  const timeTaken = endDate ? (endDate.getTime() - startDate.getTime()) / 1000 : 0; 
   const minutes = Math.floor(timeTaken / 60);
   const seconds = Math.floor(timeTaken % 60);
 
@@ -103,11 +102,11 @@ const ResultsPage: React.FC = () => {
                   className={`border p-4 rounded-lg shadow-sm ${
                     theme === 'dark'
                       ? isCorrect
-                        ? 'bg-[#37923b68] text-white' // Darker green for dark theme
-                        : 'bg-[#ff000058] text-white'   // Darker red for dark theme
+                        ? 'bg-[#37923b68] text-white' 
+                        : 'bg-[#ff000058] text-white'   
                       : isCorrect
-                      ? 'bg-[#a6f59a] text-gray-800' // Lighter green for light theme
-                      : 'bg-[#f3b3b3] text-gray-800'   // Lighter red for light theme
+                      ? 'bg-[#a6f59a] text-gray-800' 
+                      : 'bg-[#f3b3b3] text-gray-800'   
                   }`}
                 >
                   <h3 className="text-xl font-semibold mb-2">{question.question}</h3>
