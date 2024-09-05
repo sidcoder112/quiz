@@ -13,7 +13,7 @@ interface TimerProps {
 
 const Timer: React.FC<TimerProps> = ({ duration, onTimeUp, keyProp }) => {
   return (
-    <div className="text-center mb-4">
+    <div className="text-center mt-6 mb-4">
       <CountdownCircleTimer
         key={keyProp} //timer res key change
         isPlaying

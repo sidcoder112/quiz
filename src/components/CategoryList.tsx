@@ -4,6 +4,7 @@ import { Category } from './types';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 
+
 interface CategoryListProps {
   categories: Category[];
   selectedCategory: Category | null;
@@ -16,6 +17,7 @@ interface CategoryListProps {
 }
 
 export const CategoryList: React.FC<CategoryListProps> = ({
+  
   
   categories,
   selectedCategory,
@@ -41,10 +43,15 @@ export const CategoryList: React.FC<CategoryListProps> = ({
           <div key={category} className="flex items-center space-x-2">
             <button
                className={`group h-10 select-none rounded-[4px] px-4 leading-10 ${
-                selectedCategory === category
-                  ? 'bg-teal-800 text-slate-200 shadow-[0_-1px_0_1px_#004d40_inset,0_0_0_1px_#00695c_inset,0_0.5px_0_1.5px_#004d40_inset] hover:bg-teal-800 active:bg-teal-900 active:shadow-[-1px_0px_1px_0px_rgba(0,0,0,.2)_inset,1px_0px_1px_0px_rgba(0,0,0,.2)_inset,0px_0.125rem_0px_0px_rgba(0,0,0,.2)_inset]'
-                  : 'bg-gray-500 text-slate-200 shadow-[0_-1px_0_1px_#d0d0d0_inset,0_0_0_1px_#c0c0c0_inset,0_0.5px_0_1.5px_#d0d0d0_inset] hover:bg-gray-600 active:bg-gray-800 active:shadow-[-1px_0px_1px_0px_rgba(0,0,0,.2)_inset,1px_0px_1px_0px_rgba(0,0,0,.2)_inset,0px_0.125rem_0px_0px_rgba(0,0,0,.2)_inset]'
+                theme === 'dark'
+                  ? selectedCategory === category
+                    ? 'bg-teal-700 text-slate-200 shadow-[0_-1px_0_1px_#004d40_inset,0_0_0_1px_#00695c_inset,0_0.5px_0_1.5px_#004d40_inset] hover:bg-teal-800 active:bg-teal-900 active:shadow-[-1px_0px_1px_0px_rgba(0,0,0,.2)_inset,1px_0px_1px_0px_rgba(0,0,0,.2)_inset,0px_0.125rem_0px_0px_rgba(0,0,0,.2)_inset]'
+                    : 'bg-gray-700 text-slate-300 shadow-[0_-1px_0_1px_#3e3e3e_inset,0_0_0_1px_#2e2e2e_inset,0_0.5px_0_1.5px_#3e3e3e_inset] hover:bg-gray-800 active:bg-gray-900 active:shadow-[-1px_0px_1px_0px_rgba(0,0,0,.2)_inset,1px_0px_1px_0px_rgba(0,0,0,.2)_inset,0px_0.125rem_0px_0px_rgba(0,0,0,.2)_inset]'
+                  : selectedCategory === category
+                  ? 'bg-teal-300 text-gray-900 shadow-[0_-1px_0_1px_#004d40_inset,0_0_0_1px_#00695c_inset,0_0.5px_0_1.5px_#004d40_inset] hover:bg-teal-400 active:bg-teal-500 active:shadow-[-1px_0px_1px_0px_rgba(0,0,0,.2)_inset,1px_0px_1px_0px_rgba(0,0,0,.2)_inset,0px_0.125rem_0px_0px_rgba(0,0,0,.2)_inset]'
+                  : 'bg-gray-200 text-gray-900 shadow-[0_-1px_0_1px_#d0d0d0_inset,0_0_0_1px_#c0c0c0_inset,0_0.5px_0_1.5px_#d0d0d0_inset] hover:bg-gray-300 active:bg-gray-400 active:shadow-[-1px_0px_1px_0px_rgba(0,0,0,.2)_inset,1px_0px_1px_0px_rgba(0,0,0,.2)_inset,0px_0.125rem_0px_0px_rgba(0,0,0,.2)_inset]'
               }`}
+              
               onClick={() => setSelectedCategory(category)}
             >
               {category}
@@ -76,7 +83,11 @@ export const CategoryList: React.FC<CategoryListProps> = ({
         />
         <button
   onClick={handleAddCategory}
-  className="cursor-pointer rounded-[8px] bg-slate-300 ml-6 px-3 py-1 text-md text-neutral-950 transition-colors hover:bg-slate-400 active:bg-slate-500"
+  className={`rounded-[8px] 
+    ${theme === 'dark' ? 
+      'bg-[#5c5235] text-white hover:bg-[#7f734f] ' : 
+      'bg-[#e4c6b5] text-neutral-950 hover:bg-[#b38d78] '}
+    ml-6 px-3 py-1 text-md transition-colors`}
 >
   Add Category
 </button>
@@ -84,7 +95,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({
 
         {categoryError && <p className="text-red-500 mt-2">{categoryError}</p>}
         <p className={`text-sm mt-2 ${theme === 'dark' ? ' text-white' : ' text-gray-800'}`}>
-          Disclaimer: Please be cautious when adding custom categories. The system might not handle custom inputs perfectly, so ensure your custom category is accurate and relevant.
+          *Quiz Maker can make mistakes .Check important info
         </p>
       </div>
     </div>

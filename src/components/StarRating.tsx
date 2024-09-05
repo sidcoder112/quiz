@@ -44,10 +44,11 @@ const StarRating: React.FC = () => {
           </button>
         </>
       ) : (
-        <p className="mt-4 text-green-600">Thank you for your review!</p>
+        <p className={` mt-4 ${theme === 'dark' ? ' text-[#35ff3f]' : ' text-[#18830e]'}`}>Thank you for your review!</p>
       )}
     </div>
   );
 };
 
 export default StarRating;
+

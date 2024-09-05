@@ -88,7 +88,7 @@ const QuizSetupPage: React.FC = () => {
 
   const handleAddCategory = () => {
     if (!user) {
-      setCategoryError("User not authenticated.");
+      setCategoryError("Login to use custom categories.");
       return;
     }
 
@@ -136,91 +136,74 @@ const QuizSetupPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen  ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-amber-100 text-gray-700'}`}>
-            <div className="flex items-center justify-center min-h-screen ">
-            
-            <div
-              className="w-32 aspect-square rounded-full relative flex justify-center items-center animate-[spin_3s_linear_infinite] 
-              z-40 bg-[conic-gradient(white_0deg,white_300deg,transparent_270deg,transparent_360deg)] before:animate-[spin_2s_linear_infinite] 
-              before:absolute before:w-[60%] before:aspect-square before:rounded-full before:z-[80] 
-              before:bg-[conic-gradient(white_0deg,white_270deg,transparent_180deg,transparent_360deg)] after:absolute after:w-3/4 
-              after:aspect-square after:rounded-full after:z-[60] after:animate-[spin_3s_linear_infinite] 
-              after:bg-[conic-gradient(#065f46_0deg,#065f46_180deg,transparent_180deg,transparent_360deg)]"
-            >
-              <span
-                className="absolute w-[85%] aspect-square rounded-full z-[60] animate-[spin_5s_linear_infinite] 
-                bg-[conic-gradient(#34d399_0deg,#34d399_180deg,transparent_180deg,transparent_360deg)]"
-              >
-              </span>
-            </div>
-            
-                  </div>
-          </div>
+      <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-amber-100 text-gray-700'}`}>
+        <div className="flex items-center justify-center min-h-screen">
+        <div className="w-36 h-36 border-8 border-dashed rounded-full border-t-lime-400 animate-spin">
+        </div>
+        </div>
+      </div>
     );
   }
 
   return (
     <div className={`min-h-screen font-inter ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-amber-100 text-gray-800'}`}>
-        <div className="relative min-h-screen font-inter p-4 pt-16">
-          {isAuthenticated && user && (
-            <div
-              className="absolute top-4 right-4 flex items-center gap-2 cursor-pointer"
-              onClick={() => navigate('/profile')}
-            >
-              <img
-                src={user.picture || 'src/assets/default-picture.png'} 
-                alt={user.name || 'User'}
-                className="w-10 h-10 rounded-full border-2 border-gray-500"
-              />
-              <span className={`text-lg${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>{user.name}</span>
-            </div>
-          )}
-          <h2 className="text-4xl font-thin mb-4">Quiz Setup</h2>
-          <div>
-            <label className='text-xl font-thin' htmlFor="numberOfQuestions">Number of Questions (10 - 30):</label>
-            <input
-              type="number"
-              id="numberOfQuestions"
-              min="10"
-              max="30"
-              value={numberOfQuestions === "" ? "" : numberOfQuestions}
-              onChange={handleNumberOfQuestionsChange}
-              className="border px-4 py-1 rounded  ml-2 bg-gray-300 text-gray-900"
-            />
-            {numberError && <p className="text-red-500 mt-2">{numberError}</p>}
+      <div className="relative min-h-screen font-inter p-4 pt-16 md:p-6 lg:p-8">
+        {isAuthenticated && user && (
+          <div className="absolute top-4 right-4 flex items-center gap-2 cursor-pointer" onClick={() => navigate('/profile')}>
+            <img src={user.picture || 'src/assets/default-picture.png'} alt={user.name || 'User'} className="w-10 h-10 rounded-full border-2 border-gray-500" />
+            <span className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>{user.name}</span>
           </div>
-          <CategoryList 
-            categories={categories} 
-            selectedCategory={selectedCategory} 
-            setSelectedCategory={setSelectedCategory} 
-            newCategory={newCategory} 
-            setNewCategory={setNewCategory} 
-            handleAddCategory={handleAddCategory} 
-            handleDeleteCategory={handleDeleteCategory} 
-            categoryError={categoryError} 
+        )}
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-thin mb-4">Quiz Setup</h2>
+        <div className="mb-4">
+          <label className='text-lg md:text-xl font-thin' htmlFor="numberOfQuestions">Number of Questions (10 - 30):</label>
+          <input
+            type="number"
+            id="numberOfQuestions"
+            min="10"
+            max="30"
+            value={numberOfQuestions === "" ? "" : numberOfQuestions}
+            onChange={handleNumberOfQuestionsChange}
+            className="border px-3 py-1 rounded ml-2 bg-gray-300 text-gray-900 w-20"  // Made the input box smaller
           />
-          {categoryValidationError && <p className="text-red-500 mt-2">{categoryValidationError}</p>}
-          {difficultyValidationError && <p className="text-red-500 mt-2">{difficultyValidationError}</p>}
-          <DifficultySelector 
-            selectedDifficulty={selectedDifficulty} 
-            setSelectedDifficulty={setSelectedDifficulty} 
-          />
-             <button
-  onClick={handleGoHome}
-  className={`relative text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-700'} after:absolute mt-8 mr-6 after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 ${theme === 'dark' ? 'after:bg-white' : 'after:bg-neutral-800'} after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100`}
->
-  Go Home
-</button>
-
+          {numberError && <p className="text-red-500 mt-2">{numberError}</p>}
+        </div>
+        <CategoryList 
+          categories={categories} 
+          selectedCategory={selectedCategory} 
+          setSelectedCategory={setSelectedCategory} 
+          newCategory={newCategory} 
+          setNewCategory={setNewCategory} 
+          handleAddCategory={handleAddCategory} 
+          handleDeleteCategory={handleDeleteCategory} 
+          categoryError={categoryError} 
+        />
+        {categoryValidationError && <p className="text-red-500 mt-2">{categoryValidationError}</p>}
+        {difficultyValidationError && <p className="text-red-500 mt-2">{difficultyValidationError}</p>}
+        <DifficultySelector 
+          selectedDifficulty={selectedDifficulty} 
+          setSelectedDifficulty={setSelectedDifficulty} 
+        />
+        <div className="mt-12 flex gap-2 justify-center">
           <button
+            className={` ${theme === 'dark' ? 'text-white hover:text-[#ed3333]' : 'text-gray-900 hover:text-[#bf3131]'}`}
+            onClick={handleGoHome}
+          >
+            Go Home
+          </button>
+          <button
+             className={`px-6 py-2 rounded text-white font-semibold transition-colors duration-300 ${
+              theme === 'dark'
+                ? 'bg-gradient-to-r from-[#1f2937] to-[#4b5563] hover:from-[#4b5563] hover:to-[#1f2937]'
+                : 'bg-gradient-to-r from-[#007bff] to-[#0056b3] hover:from-[#0056b3] hover:to-[#007bff]'
+            }`}
             onClick={handleStartQuiz}
-            className="px-[4.5px] py-2 font-inter text-lg z-30 bg-rose-400 rounded-md text-white relative font-semibold after:-z-20 after:absolute after:h-1 after:w-1 after:bg-rose-800 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 [text-shadow:3px_5px_2px_#be123c;] hover:[text-shadow:2px_2px_2px_#fda4af]"
-            disabled={!selectedCategory || !selectedDifficulty || typeof numberOfQuestions !== 'number' || numberError !== null}
           >
             Start Quiz
           </button>
         </div>
-      </div>  
+      </div>
+    </div>
   );
 };
 

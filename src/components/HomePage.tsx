@@ -13,37 +13,18 @@ const HomePage: React.FC = () => {
   const { isAuthenticated, user ,isLoading } = useAuth0();
   const sceneUrl =
     theme === 'dark'
-      ? 'https://prod.spline.design/8hFOIGik5aD4qG0S/scene.splinecode'
+      ? 'https://prod.spline.design/36g13z9E8lA2zdk5/scene.splinecode'
       : 'https://prod.spline.design/GZF8uKFSdRkqPL4F/scene.splinecode';
-  // const handleAdmin = ()=>{
-  //   // if(user?.email==='sidharth.sl@netstratum.com'){
-  //   //   navigate('/admin-panel')
-  //   // }
-  //   navigate('/admin-panel')
-  // }
+ 
   const isAdmin = user?.email === 'sidharth.sl@netstratum.com';
   if (isLoading) {
     return (
       <div className={`min-h-screen  ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-amber-100 text-gray-700'}`}>
-            <div className="flex items-center justify-center min-h-screen ">
-            
-            <div
-              className="w-32 aspect-square rounded-full relative flex justify-center items-center animate-[spin_3s_linear_infinite] 
-              z-40 bg-[conic-gradient(white_0deg,white_300deg,transparent_270deg,transparent_360deg)] before:animate-[spin_2s_linear_infinite] 
-              before:absolute before:w-[60%] before:aspect-square before:rounded-full before:z-[80] 
-              before:bg-[conic-gradient(white_0deg,white_270deg,transparent_180deg,transparent_360deg)] after:absolute after:w-3/4 
-              after:aspect-square after:rounded-full after:z-[60] after:animate-[spin_3s_linear_infinite] 
-              after:bg-[conic-gradient(#065f46_0deg,#065f46_180deg,transparent_180deg,transparent_360deg)]"
-            >
-              <span
-                className="absolute w-[85%] aspect-square rounded-full z-[60] animate-[spin_5s_linear_infinite] 
-                bg-[conic-gradient(#34d399_0deg,#34d399_180deg,transparent_180deg,transparent_360deg)]"
-              >
-              </span>
-            </div>
-            
-                  </div>
-          </div>
+          <div className="flex items-center justify-center min-h-screen "> 
+             <div className="w-36 h-36 border-8 border-dashed rounded-full border-t-lime-400 animate-spin">
+             </div> 
+       </div>
+      </div>
         );
       }
       return (
@@ -61,8 +42,8 @@ const HomePage: React.FC = () => {
                       className="w-10 h-10 rounded-full border-2 border-gray-500 ]"
                     />
                 
-                <span className="text-lg dark:text-white text-gray-700">{user?.name}</span>
-                
+                <span className={`text-lg ${theme === 'dark' ? ' text-white' : 'text-black'}`}>{user?.name}</span>
+               
               </div>
               <button
       className="absolute top-4 left-4 px-4 py-2 pointer-events-auto bg-orange-800 text-white font-inter rounded-lg shadow-[0_2px_4px_rgba(0,0,0,0.2)] hover:bg-orange-900 active:bg-orange-700 transition-colors duration-300"
@@ -76,9 +57,9 @@ const HomePage: React.FC = () => {
 
           <div className="text-center p-6">
           <img src={quizlogo} alt="Quiz Game" className="w-full h-auto" />
-            <p className="text-lg dark:text-white text-gray-700 mb-8">
-              Test your knowledge with our fun and challenging quizzes!
-            </p>
+          <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-800'} mb-8`}>
+            Test your knowledge with our fun and challenging quizzes!
+           </p>
             <div className="flex justify-center gap-4 ">
               {isAuthenticated ? (
                 <button

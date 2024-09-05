@@ -117,21 +117,8 @@ const AdminPanel: React.FC = () => {
     return (
       <div className={`min-h-screen  ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-amber-100 text-gray-700'}`}>
           <div className="flex items-center justify-center min-h-screen">
-            <div
-              className="w-32 aspect-square rounded-full relative flex justify-center items-center animate-[spin_3s_linear_infinite] 
-              z-40 bg-[conic-gradient(white_0deg,white_300deg,transparent_270deg,transparent_360deg)] before:animate-[spin_2s_linear_infinite] 
-              before:absolute before:w-[60%] before:aspect-square before:rounded-full before:z-[80] 
-              before:bg-[conic-gradient(white_0deg,white_270deg,transparent_180deg,transparent_360deg)] after:absolute after:w-3/4 after:aspect-square 
-              after:rounded-full after:z-[60] after:animate-[spin_3s_linear_infinite] 
-              after:bg-[conic-gradient(#065f46_0deg,#065f46_180deg,transparent_180deg,transparent_360deg)]"
-            >
-              <span
-                className="absolute w-[85%] aspect-square rounded-full z-[60] animate-[spin_5s_linear_infinite] 
-                bg-[conic-gradient(#34d399_0deg,#34d399_180deg,transparent_180deg,transparent_360deg)]"
-              >
-              </span>
-            </div>
-
+          <div className="w-36 h-36 border-8 border-dashed rounded-full border-t-lime-400 animate-spin">
+          </div>
                   </div>
                   </div>
                 );
@@ -167,9 +154,9 @@ const AdminPanel: React.FC = () => {
         </div>
         <button
           onClick={() => navigate('/')}
-          className="mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Back to Home
+          className={`absolute top-4 left-4 text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-700'} after:absolute mt-8 ml-3 text-2xl after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 ${theme === 'dark' ? 'after:bg-white' : 'after:bg-neutral-800'} after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100`}
+ >
+           Home
         </button>
       </div>
     </div>
@@ -177,3 +164,4 @@ const AdminPanel: React.FC = () => {
 };
 
 export default AdminPanel;
+
