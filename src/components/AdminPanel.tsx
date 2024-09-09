@@ -78,7 +78,7 @@ const AdminPanel: React.FC = () => {
         },
         ticks: {
           color: theme === 'dark' ? '#fff' : '#333', 
-          callback: function (_: unknown, index: number) {
+          callback: function (_: unknown, index: number) {//fixing needs
             return chartData.labels[index]; 
           },
         },
