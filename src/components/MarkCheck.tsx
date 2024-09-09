@@ -20,7 +20,7 @@ const Checkmark: React.FC<CheckmarkProps> = ({ mark, totalQuestions }) => {
     { min: 0, message: "It’s okay! Keep practicing and you’ll get there!", gifUrl: 'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGt5dGZ6ejltMHc3emU1dTZtY3o5aWNiNnEzZTJ1NDlva2d0MWJsMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3BwSPbqx3QGKEgpp2/giphy.gif' },
   ];
 
-  // find first match > = min
+  // find first match > = min or 0 we do 
   const { message, gifUrl } = scoreRanges.find(range => percentage >= range.min) || scoreRanges[scoreRanges.length - 1];
 
   return (
