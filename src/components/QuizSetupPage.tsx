@@ -149,7 +149,7 @@ const QuizSetupPage: React.FC = () => {
     <div className={`min-h-screen font-inter ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-neutral-100 text-gray-800'}`}>
       <div className="relative min-h-screen font-inter p-4 pt-16 md:p-6 lg:p-8">
         {isAuthenticated && user && (
-          <div className="absolute top-4 right-4 flex items-center gap-2 cursor-pointer" onClick={() => navigate('/profile')}>
+          <div className="absolute top-4 right-4 flex items-center gap-2 " >
             <img src={user.picture || 'src/assets/default-picture.png'} alt={user.name || 'User'} className="w-10 h-10 rounded-full border-2 border-gray-500" />
             <span className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>{user.name}</span>
           </div>

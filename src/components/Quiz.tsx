@@ -179,7 +179,13 @@ const Quiz: React.FC = () => {
       />
 
       <div className="flex flex-col justify-center items-center text-center">
-        {loading && <div>Loading...</div>}
+        {loading && <div><div className={`min-h-screen  ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-amber-100 text-gray-700'}`}>
+          <div className="flex items-center justify-center min-h-screen">
+          <div className="w-36 h-36 border-8 border-dashed rounded-full border-t-lime-400 animate-spin">
+           </div>
+
+                  </div>
+                  </div></div>}
         {error && <div>Error fetching quiz questions.</div>}
         {!loading && !error && currentQuestion && (
           <>

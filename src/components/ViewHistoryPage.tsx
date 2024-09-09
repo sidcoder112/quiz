@@ -63,15 +63,15 @@ const ViewHistoryPage: React.FC = () => {
     let bValue: string | number | Date;
   
     if (sortKey === 'category' || sortKey === 'difficulty') {
-      // Case-insensitive string comparison
+      // uppercase all then we compare
       aValue = a[sortKey].toUpperCase();
       bValue = b[sortKey].toUpperCase();
     } else if (sortKey === 'endTime') {
-      // Date comparison
+      //date comparison
       aValue = new Date(a.endTime);
       bValue = new Date(b.endTime);
     } else {
-      // Numeric comparison (score and totalQuestions)
+      //score and totalquestions are num compare
       aValue = a[sortKey];
       bValue = b[sortKey];
     }

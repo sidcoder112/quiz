@@ -56,7 +56,7 @@ Return the questions in JSON format with the following structure:
     console.log(responseText)
     responseText = responseText.replace(/```json|```|```JSON|```questions/g, '').trim();
 
-    // Check if the response is a valid JSON
+    // check resp val JSON
     if (responseText.startsWith('{') || responseText.startsWith('[')) {
       return JSON.parse(responseText);
     } else {
