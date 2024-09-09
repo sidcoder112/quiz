@@ -1,4 +1,4 @@
-// import React from 'react';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { PersistGate } from 'redux-persist/integration/react';

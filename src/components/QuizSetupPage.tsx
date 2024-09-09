@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'; 
 import { CategoryList } from './CategoryList';
@@ -146,7 +146,7 @@ const QuizSetupPage: React.FC = () => {
   }
 
   return (
-    <div className={`min-h-screen font-inter ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-amber-100 text-gray-800'}`}>
+    <div className={`min-h-screen font-inter ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-neutral-100 text-gray-800'}`}>
       <div className="relative min-h-screen font-inter p-4 pt-16 md:p-6 lg:p-8">
         {isAuthenticated && user && (
           <div className="absolute top-4 right-4 flex items-center gap-2 cursor-pointer" onClick={() => navigate('/profile')}>
@@ -154,7 +154,7 @@ const QuizSetupPage: React.FC = () => {
             <span className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>{user.name}</span>
           </div>
         )}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-thin mb-4">Quiz Setup</h2>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-indigo-800 font-thin text-mb-4">Quiz Setup</h2>
         <div className="mb-4">
           <label className='text-lg md:text-xl font-thin' htmlFor="numberOfQuestions">Number of Questions (10 - 30):</label>
           <input
@@ -164,7 +164,7 @@ const QuizSetupPage: React.FC = () => {
             max="30"
             value={numberOfQuestions === "" ? "" : numberOfQuestions}
             onChange={handleNumberOfQuestionsChange}
-            className="border px-3 py-1 rounded ml-2 bg-gray-300 text-gray-900 w-20"  // Made the input box smaller
+            className="border px-3 py-1 rounded ml-2 bg-gray-300 text-gray-900 w-20"  
           />
           {numberError && <p className="text-red-500 mt-2">{numberError}</p>}
         </div>

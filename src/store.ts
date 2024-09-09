@@ -1,27 +1,3 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// import { persistStore, persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage'; 
-// import quizReducer from './slices/quizSlice';
-// import settingsReducer from './slices/settingsSlice';
-
-
-// const persistConfig = {
-//   key: 'root',
-//   storage,
-// };
-
-// const persistedQuizReducer = persistReducer(persistConfig, quizReducer);
-
-// export const store = configureStore({
-//   reducer: {
-//     quiz: persistedQuizReducer,
-//     settings: settingsReducer,
-//   },
-// });
-
-// export const persistor = persistStore(store);
-// export type RootState = ReturnType<typeof store.getState>;
-// export type AppDispatch = typeof store.dispatch;
 
 
 

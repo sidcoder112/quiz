@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToHistory } from '../slices/quizSlice';
@@ -81,7 +81,7 @@ const ResultsPage: React.FC = () => {
             </div>
           )}
 
-          <h1 className="text-3xl font-bold text-blue-600 mb-8">Quiz Results</h1>
+          <h1 className="text-3xl font-bold text-gradient-to-r from-rose-500 to-lime-500 mb-8">Quiz Results</h1>
           <div className="mb-4">
             <h2 className="text-xl font-semibold">Category: {category}</h2>
             <h2 className="text-xl font-semibold">Difficulty: {difficulty}</h2>
@@ -89,7 +89,9 @@ const ResultsPage: React.FC = () => {
             <h2 className="text-xl font-semibold">End Time: {endDate ? endDate.toLocaleTimeString() : 'N/A'}</h2>
             <h2 className="text-xl font-semibold">Time Taken: {minutes}m {seconds}s</h2>
           </div>
-          <p className="text-lg mb-4">You answered {score} out of {totalQuestions} questions correctly.</p>
+          <p className="text-lg mb-4">
+            You answered <strong>{score}</strong> out of <strong>{totalQuestions}</strong> questions correctly.
+         </p>
           <MarkCheck mark={score} totalQuestions={totalQuestions} />
           <div className="space-y-4">
             {questions.map((question, index) => {

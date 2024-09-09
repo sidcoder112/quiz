@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import {  useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,7 @@ const ViewHistoryPage: React.FC = () => {
   const { isLoading, user } = useAuth0();
 
 
-  // Sorting state
+  // sorting state
   const [sortKey, setSortKey] = useState<keyof HistoryEntry>('endTime');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
@@ -58,7 +58,6 @@ const ViewHistoryPage: React.FC = () => {
     return formatter.format(-Math.floor(yearsAgo), 'year');
   };
 
-  // Sorting function
   const sortedHistory = [...history].sort((a, b) => {
     let aValue: string | number | Date;
     let bValue: string | number | Date;

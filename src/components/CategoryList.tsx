@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaTrash } from 'react-icons/fa';
 import { Category } from './types';
 import { RootState } from '@/store';
@@ -95,7 +95,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({
 
         {categoryError && <p className="text-red-500 mt-2">{categoryError}</p>}
         <p className={`text-sm mt-2 ${theme === 'dark' ? ' text-white' : ' text-gray-800'}`}>
-          *Quiz Maker can make mistakes .Check important info
+          *Quiz Master can make mistakes .Check important info
         </p>
       </div>
     </div>

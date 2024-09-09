@@ -1,7 +1,4 @@
 
-
-
-import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 interface TimerProps {
